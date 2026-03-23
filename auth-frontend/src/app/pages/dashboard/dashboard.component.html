@@ -1,0 +1,33 @@
+<nav class="dashboard-nav">
+  <h1>Portal Angular</h1>
+  <div style="display:flex; gap: 1rem; align-items: center;">
+    <a routerLink="/profile" style="font-size: 0.9rem;">Meu Perfil</a>
+    <button (click)="logout()">Sair</button>
+  </div>
+</nav>
+
+<div class="dashboard-content">
+  <h2 style="text-align: left;">Bem-vindo de volta!</h2>
+  <p style="color: var(--text-muted); margin-bottom: 2rem;">Confira as informações da sua sessão abaixo.</p>
+  
+  <div class="glass-panel info-card" *ngIf="user">
+    <div class="info-item">
+      <span class="info-label">Nome Completo</span>
+      <span class="info-value">{{ user.name }}</span>
+    </div>
+    
+    <div class="info-item">
+      <span class="info-label">Endereço de Email</span>
+      <span class="info-value">{{ user.email }}</span>
+    </div>
+    
+    <div class="info-item" style="margin-bottom: 0;">
+      <span class="info-label">Conta criada em</span>
+      <span class="info-value">{{ user.createAt | date:'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+  </div>
+  
+  <div class="glass-panel info-card" *ngIf="!user">
+    <p class="text-center" style="color: var(--text-muted);">Autenticando e conectando à sua API...</p>
+  </div>
+</div>
